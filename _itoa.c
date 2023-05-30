@@ -4,10 +4,11 @@
  * @num: number to be converted
  * @base: base of the number
  * @flag: parameters flag
+ * @fl: flags struct
  *
  * Return: pointer to the string
  */
-char *_itoa(long int num, int base, int flag)
+char *_itoa(long int num, int base, int flag, flag_ty *fl)
 {
 	static char *ar;
 	static char buf[50];
@@ -15,6 +16,7 @@ char *_itoa(long int num, int base, int flag)
 	char sign = 0;
 	unsigned long int n = num;
 
+	(void)(fl);
 	if (!(flag & CONV_UNSIG) && num < 0)
 	{
 		n = -num;
