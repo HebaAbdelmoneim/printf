@@ -15,7 +15,7 @@ int print_hex_l(va_list pa, flag_ty *fl)
 	char *s;
 
 	if (fl->long_mod)
-		l = va_arg(pa, unsigned long);
+		l = (unsigned long)va_arg(pa, unsigned long);
 	else if (fl->short_mod)
 		l = (unsigned short int)va_arg(pa, unsigned int);
 	else
@@ -48,7 +48,7 @@ int print_hex_u(va_list pa, flag_ty *fl)
 	char *s;
 
 	if (fl->long_mod)
-		l = va_arg(pa, unsigned long);
+		l = (unsigned long)va_arg(pa, unsigned long);
 	else if (fl->short_mod)
 		l = (unsigned short int)va_arg(pa, unsigned int);
 	else
@@ -102,7 +102,7 @@ int print_octal(va_list pa, flag_ty *fl)
 	int ch_num = 0;
 
 	if (fl->long_mod)
-		l = va_arg(pa, unsigned long);
+		l = (unsigned long)va_arg(pa, unsigned long);
 	else if (fl->short_mod)
 		l = (unsigned short int)va_arg(pa, unsigned int);
 	else
