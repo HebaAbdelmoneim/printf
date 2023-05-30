@@ -52,7 +52,7 @@ int print_num_ap(char *s, flag_ty *fl)
 	if (fl->zero_fl  && !fl->minus_fl)
 		pad = '0';
 
-	sign = sign2 = (!fl->unsign && *s == '-');
+	sign = s2 = (!fl->unsign && *s == '-');
 
 	if (sign && len < fl->width && pad == '0' && !fl->minus_fl)
 		s++;
