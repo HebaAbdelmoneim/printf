@@ -98,7 +98,7 @@ int print_num_ap(char *s, flag_ty *fl);
 int print_num_bp(char *s, flag_ty *fl);
 
 /*convert integer to string*/
-char *_itoa(long int num, int base, int flag);
+char *_itoa(long int num, int base, int flag, flag_ty *fl);
 
 /* initialization of the flags function */
 void init_flags(flag_ty *fl);
