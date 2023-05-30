@@ -41,7 +41,7 @@ int print_int(va_list pa, flag_ty *fl)
 		in = (short int)va_arg(pa, int);
 	else
 		in = va_arg(pa, int);
-	ch_num = print_num(_itoa(in, 10, 0), fl);
+	ch_num = print_num(_itoa(in, 10, 0, fl), fl);
 	return (ch_num);
 }
 
@@ -131,7 +131,7 @@ int print_S(va_list pa, __attribute__((unused)) flag_ty *fl)
 		{
 			ch_num += _putchar('\\');
 			ch_num += _putchar('x');
-			hex = _itoa(str[i], 16, 0);
+			hex = _itoa(str[i], 16, 0, fl);
 			if (!hex[1])
 				ch_num += _putchar('0');
 			ch_num += _putstr(hex);
