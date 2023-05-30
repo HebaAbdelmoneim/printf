@@ -39,7 +39,7 @@ int print_unsigned(va_list pa, flag_ty *fl)
 	else
 		u = (unsigned int)va_arg(pa, unsigned int);
 	fl->unsign = 1;
-	return (print_num(_itoa(u, 10, CONV_UNSIG), fl));
+	return (print_num(_itoa(u, 10, CONV_UNSIG, fl), fl));
 }
 
 /**
@@ -58,7 +58,7 @@ int print_address(va_list pa, flag_ty *fl)
 	if (!p)
 		return (_putstr("(nil)"));
 
-	str = _itoa(p, 16, CONV_UNSIG | CONV_LC);
+	str = _itoa(p, 16, CONV_UNSIG | CONV_LC, fl);
 	*--str = 'x';
 	*--str = '0';
 	return (print_num(str, fl));
