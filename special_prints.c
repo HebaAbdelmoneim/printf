@@ -30,16 +30,16 @@ int print_part(char *bg, char *end, char *exclude)
  */
 int print_unsigned(va_list pa, flag_ty *fl)
 {
-	unsigned long int l;
+	unsigned long u;
 
 	if (fl->long_mod)
-		l = va_arg(pa, unsigned long int);
+		u = (unsigned long)va_arg(pa, unsigned long);
 	else if (fl->short_mod)
-		l = (unsigned short int)va_arg(pa, unsigned int);
+		u = (unsigned short int)va_arg(pa, unsigned int);
 	else
-		l = (unsigned int)va_arg(pa, unsigned int);
+		u = (unsigned int)va_arg(pa, unsigned int);
 	fl->unsign = 1;
-	return (print_num(_itoa(l, 10, CONV_UNSIG), fl));
+	return (print_num(_itoa(u, 10, CONV_UNSIG), fl));
 }
 
 /**
@@ -56,7 +56,7 @@ int print_address(va_list pa, flag_ty *fl)
 
 	p = va_arg(pa, unsigned long int);
 	if (!p)
-		return (_putstr(NULL_STR));
+		return (_putstr("(nil)"));
 
 	str = _itoa(p, 16, CONV_UNSIG | CONV_LC);
 	*--str = 'x';
@@ -73,16 +73,17 @@ int print_address(va_list pa, flag_ty *fl)
  */
 int print_rev(va_list pa, __attribute__((unused)) flag_ty *fl)
 {
-	int len, i, ch_num = 0;
+	int len, ch_num = 0;
 	char *str = va_arg(pa, char *);
 
-	if (str != NULL)
+	if (str)
 	{
-		len = strlen(str);
-		str = str + len;
-		for (i = len - 1; i > 0; i--)
+		for (len = 0; *str; str++)
+			len++;
+		str--;
+		for (; len > 0; len--, str--)
 		{
-			ch_num += _putchar(str[len]);
+			ch_num += _putchar(*str);
 		}
 	}
 	return (ch_num);
