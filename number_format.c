@@ -46,7 +46,7 @@ int print_num(char *s, flag_ty *fl)
  */
 int print_num_ap(char *s, flag_ty *fl)
 {
-	unsigned int ch_num = 0, sign, sign2, len = strlen(s);
+	unsigned int ch_num = 0, sign, s2, len = strlen(s);
 	char pad = ' ';
 
 	if (fl->zero_fl  && !fl->minus_fl)
@@ -59,15 +59,15 @@ int print_num_ap(char *s, flag_ty *fl)
 	else
 		sign = 0;
 
-	if ((fl->plus_fl && sign2) || (!fl->plus_fl && fl->space_fl && !sign2))
+	if ((fl->plus_fl && s2) || (!fl->plus_fl && fl->space_fl && !s2))
 		len++;
 
 	if (sign && pad == '0')
 		ch_num += _putchar('-');
 
-	if (fl->plus_fl && !sign2 && pad == '0' && !fl->unsign)
+	if (fl->plus_fl && !s2 && pad == '0' && !fl->unsign)
 		ch_num += _putchar('+');
-	else if (!fl->plus_fl && fl->space_fl && !sign2 && !fl->unsign && fl->zero_fl)
+	else if (!fl->plus_fl && fl->space_fl && !s2 && !fl->unsign && fl->zero_fl)
 		ch_num += _putchar(' ');
 
 	while (len++ < fl->width)
@@ -76,10 +76,9 @@ int print_num_ap(char *s, flag_ty *fl)
 	if (sign && pad == ' ')
 		ch_num += _putchar('-');
 
-	if (fl->plus_fl && !sign2 && pad == ' ' && !fl->unsign)
+	if (fl->plus_fl && !s2 && pad == ' ' && !fl->unsign)
 		ch_num += _putchar('+');
-	else if (!fl->plus_fl && fl->space_fl
-			&& !sign2 && !fl->unsign && !fl->zero_fl)
+	else if (!fl->plus_fl && fl->space_fl && !s2 && !fl->unsign && !fl->zero_fl)
 		ch_num += _putchar(' ');
 	ch_num += _putstr(s);
 	return (ch_num);
@@ -94,22 +93,22 @@ int print_num_ap(char *s, flag_ty *fl)
  */
 int print_num_bp(char *s, flag_ty *fl)
 {
-	unsigned int ch_num = 0, sign, sign2, len = strlen(s);
+	unsigned int ch_num = 0, sign, s2, len = strlen(s);
 	char pad = ' ';
 
 	if (fl->zero_fl && !fl->minus_fl)
 		pad = '0';
 
-	sign = sign2 = (!fl->unsign && *s == '-');
+	sign = s2 = (!fl->unsign && *s == '-');
 
 	if (sign && len < fl->width && pad == '0' && !fl->minus_fl)
 		s++;
 	else
 		sign = 0;
 
-	if (fl->plus_fl && !sign2 && !fl->unsign)
+	if (fl->plus_fl && !s2 && !fl->unsign)
 		ch_num += _putchar('+'), len++;
-	else if (fl->space_fl && !sign2 && !fl->unsign)
+	else if (fl->space_fl && !s2 && !fl->unsign)
 		ch_num += _putchar(' '), len++;
 
 	ch_num += _putstr(s);
