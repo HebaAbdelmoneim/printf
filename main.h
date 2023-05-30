@@ -15,7 +15,7 @@
 #define CLEAR_BUF -1
 
 #define INIT_FLAG {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-#define NULL_STR "(nil)"
+#define NULL_STR "(null)"
 
 #define CONV_LC 1
 #define CONV_UNSIG 2
