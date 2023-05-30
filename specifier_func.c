@@ -115,7 +115,7 @@ char *check_width(char *s, flag_ty *fl, va_list pa)
 	}
 	else
 	{
-		while (isdigit(*s))
+		while (*s >= '0' && *s <= '9')
 			i = i * 10 + (*s++ - '0');
 	}
 	fl->width = i;
@@ -144,7 +144,7 @@ char *check_prec(char *s, flag_ty *fl, va_list pa)
 	}
 	else
 	{
-		while (isdigit(*s))
+		while (*s >= '0' && *s <= '9')
 			i = i * 10 + (*s++ - '0');
 	}
 	fl->prec = i;
