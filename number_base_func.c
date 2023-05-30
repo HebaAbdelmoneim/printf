@@ -21,7 +21,7 @@ int print_hex_l(va_list pa, flag_ty *fl)
 	else
 		l = (unsigned int) va_arg(pa, unsigned int);
 
-	s = _itoa(l, 16, CONV_UNSIG | CONV_LC);
+	s = _itoa(l, 16, CONV_UNSIG | CONV_LC, fl);
 
 	if (fl->hash_fl && l)
 	{
@@ -54,7 +54,7 @@ int print_hex_u(va_list pa, flag_ty *fl)
 	else
 		l = (unsigned int)va_arg(pa, unsigned int);
 
-	s = _itoa(l, 16, CONV_UNSIG);
+	s = _itoa(l, 16, CONV_UNSIG, fl);
 
 	if (fl->hash_fl && l)
 	{
@@ -77,7 +77,7 @@ int print_hex_u(va_list pa, flag_ty *fl)
 int print_binary(va_list pa, flag_ty *fl)
 {
 	unsigned int n = va_arg(pa, unsigned int);
-	char *s = _itoa(n, 2, CONV_UNSIG);
+	char *s = _itoa(n, 2, CONV_UNSIG, fl);
 	int ch_num = 0;
 
 	if (fl->hash_fl && n)
@@ -108,7 +108,7 @@ int print_octal(va_list pa, flag_ty *fl)
 	else
 		l = (unsigned int)va_arg(pa, unsigned int);
 
-	s = _itoa(l, 8, CONV_UNSIG);
+	s = _itoa(l, 8, CONV_UNSIG, fl);
 	if (fl->hash_fl && l)
 		*--s = '0';
 	fl->unsign = 1;
